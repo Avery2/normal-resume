@@ -1,4 +1,4 @@
 # normal-resume
 Needed version control for resume
 
-Note the gh pages on this repo is important because github README and website both point to here.
+Note to self: github README and website both point to the file Justin_Avery_Chan_Resume.pdf here.
