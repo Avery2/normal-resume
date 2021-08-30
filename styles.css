@@ -1,0 +1,35 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body, html {
+    border: none;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background-color: #333639;
+    font-family: 'Poppins', Poppins, sans-serif;
+}
+
+iframe {
+    border: none;
+}
+
+ul {
+    list-style-type: none;
+    display: flex;
+}
+
+li {
+    padding: 10px;
+}
+
+a, p {
+    text-decoration: none;
+    color: white;
+}
+
+a:hover { color:white; }
+a:focus { color:white; }
+a:active { color:white; }
