@@ -19,5 +19,4 @@ Backup of *.doc*
 # Visio autosave temporary files
 *.~vsd*
 
-# our old buddy
 .DS_Store
