@@ -67,7 +67,14 @@ a:focus::after {
 }
 
 @media only screen and (max-width: 600px) {
+    body {
+        justify-content: center;
+    }
   ul {
     justify-content: center;
+  }
+  li:last-child {
+    position: relative;
+    margin-right: 0;
   }
 }
