@@ -5,3 +5,11 @@ Needed version control for my resume.
 
 - Link to pages: [http://www.averychan.site/normal-resume/](http://www.averychan.site/normal-resume/)
 - Link to file: [https://www.averychan.site/normal-resume/Justin_Avery_Chan_Resume.pdf](https://www.averychan.site/normal-resume/Justin_Avery_Chan_Resume.pdf)
+
+## Linked to from:
+
+> Record where I add links here incase I ever change url again.
+
+- [Website] About page
+- [Website] Resume nav link
+- [GitHub README] Badge
