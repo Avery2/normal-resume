@@ -67,9 +67,11 @@ a:focus::after {
 }
 
 @media only screen and (max-width: 600px) {
-    body {
-        justify-content: center;
-    }
+  body {
+    justify-content: center;
+    width: auto;
+    height: 100vh;
+  }
   ul {
     justify-content: center;
   }
