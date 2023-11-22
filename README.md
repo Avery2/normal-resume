@@ -13,3 +13,4 @@ Needed version control for my resume.
 - [Website] About page
 - [Website] Resume nav link
 - [GitHub README] Badge
+- LinkedIn Profile
