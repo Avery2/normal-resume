@@ -289,10 +289,10 @@ h2 {
         gap: 0.8em;
     }
 
-    /* Make links print-friendly */
+    /* Make links visible and clickable in print */
     a {
-        color: #000 !important;
-        text-decoration: none !important;
+        color: #0066cc !important;
+        text-decoration: underline !important;
     }
 
     /* Optimize font sizes for print */
@@ -322,21 +322,17 @@ h2 {
     }
 }
 
+/* Universal link styles for ALL contexts */
+a {
+    color: #0066cc !important;
+    text-decoration: underline !important;
+}
+
 /* Screen-only styles for better web viewing */
 @media screen {
     body {
         box-shadow: 0 0 10px rgba(0,0,0,0.1);
         margin: 2em auto;
         background: white;
-    }
-
-    .contact-info a {
-        color: #0066cc;
-        text-decoration: underline;
-    }
-
-    .projects-intro a {
-        color: #0066cc;
-        text-decoration: underline;
     }
 }

@@ -30,7 +30,10 @@ const path = require('path');
 
     console.log('🎨 Applying styles and generating PDF...');
 
-    // Generate PDF with print settings
+    // Wait a bit more to ensure all content is loaded
+    await page.waitForTimeout(1000);
+
+    // Generate PDF with print settings and link preservation
     await page.pdf({
       path: 'Justin_Avery_Chan_Resume.pdf',
       format: 'Letter',
@@ -41,9 +44,9 @@ const path = require('path');
         bottom: '0.75in',
         left: '0.75in'
       },
-      // Make PDFs deterministic by removing timestamps
-      tagged: false,
-      outline: false
+      // Try to preserve links
+      tagged: true,
+      outline: true
     });
 
     await browser.close();

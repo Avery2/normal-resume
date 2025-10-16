@@ -74,6 +74,85 @@ async function testPDF() {
     warnings.push('❌ Failed to check PDF encryption status');
   }
 
+  // Test 5: Check if HTML file exists (for iframe)
+  total++;
+  const htmlPath = path.resolve('./Justin_Avery_Chan_Resume.html');
+  if (!fs.existsSync(htmlPath)) {
+    warnings.push('❌ HTML file does not exist - iframe in index.html will be broken');
+  } else {
+    console.log('✅ HTML file exists for iframe');
+    passed++;
+  }
+
+  // Test 6: Check if index.html exists and has proper links
+  total++;
+  const indexPath = path.resolve('./index.html');
+  if (!fs.existsSync(indexPath)) {
+    warnings.push('❌ index.html does not exist');
+  } else {
+    try {
+      const indexContent = fs.readFileSync(indexPath, 'utf8');
+      const hasHtmlIframe = indexContent.includes('Justin_Avery_Chan_Resume.html');
+      const hasPdfLink = indexContent.includes('Justin_Avery_Chan_Resume.pdf');
+      const hasDownloadLink = indexContent.includes('download=');
+
+      if (hasHtmlIframe && hasPdfLink && hasDownloadLink) {
+        console.log('✅ index.html has proper resume links');
+        passed++;
+      } else {
+        warnings.push('❌ index.html missing proper resume links');
+      }
+    } catch (error) {
+      warnings.push('❌ Failed to read index.html');
+    }
+  }
+
+  // Test 7: Check if HTML has links and CSS styles them properly
+  total++;
+  try {
+    const resumeHtmlPath = path.resolve('./Justin_Avery_Chan_Resume.html');
+    const resumeCssPath = path.resolve('./print.css');
+    const htmlContent = fs.readFileSync(resumeHtmlPath, 'utf8');
+    const cssContent = fs.readFileSync(resumeCssPath, 'utf8');
+
+    // Check if HTML has links
+    const hasLinks = htmlContent.includes('<a href=');
+
+    // Check if CSS styles links properly
+    const hasLinkStyling = cssContent.includes('color: #0066cc') &&
+                          cssContent.includes('text-decoration: underline');
+
+    if (hasLinks && hasLinkStyling) {
+      console.log('✅ HTML contains links and CSS styles them visibly');
+      passed++;
+    } else if (!hasLinks) {
+      warnings.push('❌ HTML contains no links to style');
+    } else {
+      warnings.push('❌ CSS does not properly style links (missing blue color or underline)');
+    }
+  } catch (error) {
+    warnings.push('❌ Failed to analyze link styling');
+  }
+
+  // Test 8: Check if PDF might have clickable links (rough heuristic)
+  total++;
+  try {
+    const pdfBuffer = fs.readFileSync(pdfPath);
+    const pdfString = pdfBuffer.toString('latin1');
+
+    // Look for PDF annotation objects that might indicate links
+    const hasAnnotations = pdfString.includes('/Annot') || pdfString.includes('/Link') || pdfString.includes('/URI');
+
+    if (hasAnnotations) {
+      console.log('✅ PDF appears to contain link annotations');
+      passed++;
+    } else {
+      warnings.push('❌ PDF does not appear to contain clickable links');
+    }
+  } catch (error) {
+    warnings.push('❌ Failed to analyze PDF link annotations');
+  }
+
   // Print summary
   console.log(`\n📊 Tests passed: ${passed}/${total}`);
 
