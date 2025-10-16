@@ -46,7 +46,7 @@ jobs:
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-        git add Justin_Avery_Chan_Resume.pdf
+        git add -f Justin_Avery_Chan_Resume.pdf
         if git diff --staged --quiet; then
           echo "No changes to commit"
         else
