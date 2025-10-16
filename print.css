@@ -1,0 +1,292 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 11pt;
+    line-height: 1.4;
+    color: #000;
+    background: #fff;
+    max-width: 8.5in;
+    margin: 0 auto;
+    padding: 0.75in;
+}
+
+/* Page setup for print */
+@page {
+    size: letter;
+    margin: 0.75in;
+}
+
+/* Header styles */
+header {
+    text-align: center;
+    margin-bottom: 1.5em;
+    border-bottom: 2px solid #000;
+    padding-bottom: 0.5em;
+}
+
+h1 {
+    font-size: 18pt;
+    font-weight: bold;
+    margin-bottom: 0.3em;
+}
+
+.contact-info {
+    font-size: 10pt;
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+    flex-wrap: wrap;
+}
+
+.contact-info span {
+    white-space: nowrap;
+}
+
+.contact-info a {
+    color: #000;
+    text-decoration: none;
+}
+
+/* Section headers */
+h2 {
+    font-size: 12pt;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-bottom: 1px solid #000;
+    margin: 1.2em 0 0.6em 0;
+    padding-bottom: 0.1em;
+}
+
+/* Experience section */
+.experience .job {
+    margin-bottom: 1em;
+}
+
+.job-header {
+    margin-bottom: 0.3em;
+}
+
+.job-header h3 {
+    font-size: 11pt;
+    font-weight: bold;
+    display: inline;
+}
+
+.job-meta {
+    float: right;
+    font-size: 10pt;
+    text-align: right;
+}
+
+.job-title {
+    font-style: italic;
+    font-size: 10pt;
+    clear: both;
+}
+
+.job p {
+    margin: 0.3em 0;
+    font-size: 10pt;
+}
+
+.job ul {
+    margin-left: 1.2em;
+    margin-top: 0.2em;
+}
+
+.job li {
+    margin-bottom: 0.1em;
+    font-size: 10pt;
+}
+
+/* Education section */
+.education .degree {
+    margin-bottom: 1em;
+}
+
+.degree-header h3 {
+    font-size: 11pt;
+    font-weight: bold;
+    display: inline;
+}
+
+.degree-meta {
+    float: right;
+    font-size: 10pt;
+    text-align: right;
+}
+
+.degree-title {
+    font-style: italic;
+    font-size: 10pt;
+    clear: both;
+}
+
+.gpa {
+    font-size: 10pt;
+    margin-top: 0.2em;
+}
+
+.degree ul {
+    margin-left: 1.2em;
+    margin-top: 0.3em;
+}
+
+.degree li {
+    margin-bottom: 0.3em;
+    font-size: 10pt;
+}
+
+/* Skills section */
+.skills-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3em;
+}
+
+.skill-category {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5em;
+}
+
+.skill-category h3 {
+    font-size: 10pt;
+    font-weight: bold;
+    min-width: 4em;
+    flex-shrink: 0;
+}
+
+.skill-category p {
+    font-size: 10pt;
+    flex: 1;
+}
+
+/* Projects section */
+.projects-intro {
+    font-size: 10pt;
+    margin-bottom: 0.5em;
+}
+
+.projects-intro a {
+    color: #000;
+    text-decoration: none;
+}
+
+.projects-list {
+    margin-left: 1.2em;
+}
+
+.projects-list li {
+    margin-bottom: 0.3em;
+    font-size: 10pt;
+}
+
+/* Extracurricular section */
+.extracurricular ul {
+    margin-left: 1.2em;
+}
+
+.extracurricular li {
+    margin-bottom: 0.3em;
+    font-size: 10pt;
+}
+
+/* Print-specific styles */
+@media print {
+    body {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        font-size: 10pt;
+        padding: 0;
+        max-width: none;
+    }
+
+    @page {
+        margin: 0.5in;
+    }
+
+    /* Prevent page breaks within sections where possible */
+    .job, .degree {
+        page-break-inside: avoid;
+        break-inside: avoid;
+    }
+
+    h2 {
+        page-break-after: avoid;
+        break-after: avoid;
+    }
+
+    /* Ensure good spacing for print */
+    h2 {
+        margin-top: 1em;
+        margin-bottom: 0.4em;
+    }
+
+    .job, .degree {
+        margin-bottom: 0.8em;
+    }
+
+    /* Adjust contact info for print */
+    .contact-info {
+        font-size: 9pt;
+        gap: 0.8em;
+    }
+
+    /* Make links print-friendly */
+    a {
+        color: #000 !important;
+        text-decoration: none !important;
+    }
+
+    /* Optimize font sizes for print */
+    h1 {
+        font-size: 16pt;
+    }
+
+    h2 {
+        font-size: 11pt;
+    }
+
+    .job-header h3, .degree-header h3 {
+        font-size: 10pt;
+    }
+
+    .job-meta, .degree-meta, .job-title, .degree-title {
+        font-size: 9pt;
+    }
+
+    .job p, .job li, .degree li, .projects-list li, .extracurricular li,
+    .skill-category h3, .skill-category p, .projects-intro {
+        font-size: 9pt;
+    }
+
+    .gpa {
+        font-size: 9pt;
+    }
+}
+
+/* Screen-only styles for better web viewing */
+@media screen {
+    body {
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        margin: 2em auto;
+        background: white;
+    }
+
+    .contact-info a {
+        color: #0066cc;
+        text-decoration: underline;
+    }
+
+    .projects-intro a {
+        color: #0066cc;
+        text-decoration: underline;
+    }
+}

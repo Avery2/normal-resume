@@ -1,0 +1,92 @@
+name: Generate Resume PDF
+
+on:
+  push:
+    branches: [ main, html-workflow ]
+    paths:
+      - 'resume.html'
+      - 'print.css'
+      - '.github/workflows/build.yml'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'resume.html'
+      - 'print.css'
+      - '.github/workflows/build.yml'
+
+jobs:
+  generate-pdf:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+
+    - name: Install Playwright
+      run: |
+        npm init -y
+        npm install playwright
+        npx playwright install chromium
+
+    - name: Generate PDF from HTML
+      run: |
+        cat > generate-pdf.js << 'EOF'
+        const { chromium } = require('playwright');
+        const fs = require('fs');
+        const path = require('path');
+
+        (async () => {
+          const browser = await chromium.launch();
+          const page = await browser.newPage();
+
+          // Load the HTML file
+          const htmlPath = path.resolve('./resume.html');
+          const htmlContent = fs.readFileSync(htmlPath, 'utf8');
+
+          // Set content and wait for it to load
+          await page.setContent(htmlContent, { waitUntil: 'networkidle' });
+
+          // Generate PDF with print settings
+          await page.pdf({
+            path: 'resume.pdf',
+            format: 'Letter',
+            printBackground: true,
+            margin: {
+              top: '0.75in',
+              right: '0.75in',
+              bottom: '0.75in',
+              left: '0.75in'
+            }
+          });
+
+          await browser.close();
+          console.log('PDF generated successfully: resume.pdf');
+        })();
+        EOF
+
+        node generate-pdf.js
+
+    - name: Upload PDF as artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: resume-pdf
+        path: resume.pdf
+        retention-days: 90
+
+    - name: Commit PDF to repository
+      if: github.ref == 'refs/heads/main'
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add resume.pdf
+        if git diff --staged --quiet; then
+          echo "No changes to commit"
+        else
+          git commit -m "Auto-generate resume.pdf from HTML [skip ci]"
+          git push
+        fi
