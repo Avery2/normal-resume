@@ -40,7 +40,10 @@ const path = require('path');
         right: '0.75in',
         bottom: '0.75in',
         left: '0.75in'
-      }
+      },
+      // Make PDFs deterministic by removing timestamps
+      tagged: false,
+      outline: false
     });
 
     await browser.close();
