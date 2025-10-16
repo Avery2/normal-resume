@@ -26,7 +26,6 @@ body {
 header {
     text-align: center;
     margin-bottom: 1.5em;
-    border-bottom: 2px solid #000;
     padding-bottom: 0.5em;
 }
 
@@ -70,24 +69,45 @@ h2 {
 
 .job-header {
     margin-bottom: 0.3em;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto;
+    gap: 0.1em 1em;
+    border: none;
 }
 
 .job-header h3 {
     font-size: 11pt;
     font-weight: bold;
-    display: inline;
+    grid-column: 1;
+    grid-row: 1;
+    justify-self: start;
+    border: none;
+    margin: 0;
+    padding: 0;
 }
 
-.job-meta {
-    float: right;
+.job-location {
     font-size: 10pt;
-    text-align: right;
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: end;
 }
 
 .job-title {
     font-style: italic;
     font-size: 10pt;
-    clear: both;
+    grid-column: 1;
+    grid-row: 2;
+    justify-self: start;
+}
+
+.job-dates {
+    font-size: 10pt;
+    font-style: italic;
+    grid-column: 2;
+    grid-row: 2;
+    justify-self: end;
 }
 
 .job p {
@@ -110,27 +130,57 @@ h2 {
     margin-bottom: 1em;
 }
 
+.degree-header {
+    margin-bottom: 0.3em;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto auto;
+    gap: 0.1em 1em;
+}
+
 .degree-header h3 {
     font-size: 11pt;
     font-weight: bold;
-    display: inline;
+    grid-column: 1;
+    grid-row: 1;
+    justify-self: start;
+    border: none;
+    margin: 0;
+    padding: 0;
 }
 
-.degree-meta {
-    float: right;
+.degree-location {
     font-size: 10pt;
-    text-align: right;
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: end;
 }
 
 .degree-title {
     font-style: italic;
     font-size: 10pt;
-    clear: both;
+    grid-column: 1;
+    grid-row: 2;
+    justify-self: start;
+}
+
+.degree-dates {
+    font-size: 10pt;
+    font-style: italic;
+    grid-column: 2;
+    grid-row: 2;
+    justify-self: end;
 }
 
 .gpa {
     font-size: 10pt;
+    font-style: italic;
+    grid-column: 1;
+    grid-row: 3;
+    justify-self: start;
     margin-top: 0.2em;
+    border: none;
+    padding: 0;
 }
 
 .degree ul {
