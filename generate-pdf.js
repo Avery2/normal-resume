@@ -9,11 +9,11 @@ const path = require('path');
 
   try {
     // Check if required files exist
-    const htmlPath = path.resolve('./resume.html');
+    const htmlPath = path.resolve('./Justin_Avery_Chan_Resume.html');
     const cssPath = path.resolve('./print.css');
 
     if (!fs.existsSync(htmlPath)) {
-      throw new Error('resume.html not found in current directory');
+      throw new Error('Justin_Avery_Chan_Resume.html not found in current directory');
     }
 
     if (!fs.existsSync(cssPath)) {
@@ -32,7 +32,7 @@ const path = require('path');
 
     // Generate PDF with print settings
     await page.pdf({
-      path: 'resume.pdf',
+      path: 'Justin_Avery_Chan_Resume.pdf',
       format: 'Letter',
       printBackground: true,
       margin: {
@@ -45,10 +45,10 @@ const path = require('path');
 
     await browser.close();
 
-    console.log('✅ PDF generated successfully: resume.pdf');
+    console.log('✅ PDF generated successfully: Justin_Avery_Chan_Resume.pdf');
 
     // Check file size for feedback
-    const stats = fs.statSync('resume.pdf');
+    const stats = fs.statSync('Justin_Avery_Chan_Resume.pdf');
     const fileSizeInKB = Math.round(stats.size / 1024);
     console.log(`📊 File size: ${fileSizeInKB} KB`);
 

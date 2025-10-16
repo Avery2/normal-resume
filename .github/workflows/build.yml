@@ -4,13 +4,13 @@ on:
   push:
     branches: [ main, html-workflow ]
     paths:
-      - 'resume.html'
+      - 'Justin_Avery_Chan_Resume.html'
       - 'print.css'
       - '.github/workflows/build.yml'
   pull_request:
     branches: [ main ]
     paths:
-      - 'resume.html'
+      - 'Justin_Avery_Chan_Resume.html'
       - 'print.css'
       - '.github/workflows/build.yml'
   workflow_dispatch:
@@ -38,7 +38,7 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: resume-pdf
-        path: resume.pdf
+        path: Justin_Avery_Chan_Resume.pdf
         retention-days: 90
 
     - name: Commit PDF to repository
@@ -46,10 +46,10 @@ jobs:
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-        git add resume.pdf
+        git add Justin_Avery_Chan_Resume.pdf
         if git diff --staged --quiet; then
           echo "No changes to commit"
         else
-          git commit -m "Auto-generate resume.pdf from HTML [skip ci]"
+          git commit -m "Auto-generate Justin_Avery_Chan_Resume.pdf from HTML [skip ci]"
           git push
         fi

@@ -2,9 +2,9 @@
 
 Version control for my resume.
 
-- GitHub README and personal website both point to the file `resume.pdf`.
+- GitHub README and personal website both point to the file `Justin_Avery_Chan_Resume.pdf`.
     - You need to keep the pages environment up for the link to the file to work
-    - Link to file: [https://www.averychan.site/normal-resume/resume.pdf](https://www.averychan.site/normal-resume/resume.pdf)
+    - Link to file: [https://www.averychan.site/normal-resume/Justin_Avery_Chan_Resume.pdf](https://www.averychan.site/normal-resume/Justin_Avery_Chan_Resume.pdf)
 - Record where I add links here incase I ever change url again. Linked to from:
     - [Website] About page
     - [Website] Resume nav link
@@ -18,7 +18,7 @@ Version control for my resume.
 **Local PDF generation:**
 ```bash
 npm run setup    # First time only
-npm run generate # Create resume.pdf
+npm run generate # Create Justin_Avery_Chan_Resume.pdf
 npm run preview  # View at localhost:3000
 ```
 
