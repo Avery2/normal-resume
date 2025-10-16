@@ -1,0 +1,17 @@
+{
+  "name": "resume-generator",
+  "version": "1.0.0",
+  "description": "HTML to PDF resume generator",
+  "main": "generate-pdf.js",
+  "scripts": {
+    "generate": "node generate-pdf.js",
+    "setup": "npm install && npx playwright install chromium",
+    "preview": "npx serve . -p 3000"
+  },
+  "dependencies": {
+    "playwright": "^1.40.0"
+  },
+  "devDependencies": {
+    "serve": "^14.2.1"
+  }
+}
