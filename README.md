@@ -1,6 +1,6 @@
 # normal-resume
 
-Version control for my resume.
+Version control for my resume. Now a PDF generates from html so I can vibe code my resume.
 
 - GitHub README and personal website both point to the file `Justin_Avery_Chan_Resume.pdf`.
     - You need to keep the pages environment up for the link to the file to work
