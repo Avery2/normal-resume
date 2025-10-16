@@ -6,7 +6,8 @@
   "scripts": {
     "generate": "node generate-pdf.js",
     "setup": "npm install && npx playwright install chromium",
-    "preview": "npx serve . -p 3000"
+    "preview": "npx serve . -p 3000",
+    "test": "node test-pdf.js"
   },
   "dependencies": {
     "playwright": "^1.40.0"

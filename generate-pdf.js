@@ -52,6 +52,21 @@ const path = require('path');
     const fileSizeInKB = Math.round(stats.size / 1024);
     console.log(`📊 File size: ${fileSizeInKB} KB`);
 
+    // Run PDF tests
+    console.log('');
+    try {
+      const { spawn } = require('child_process');
+      const testProcess = spawn('node', ['test-pdf.js'], { stdio: 'inherit' });
+
+      testProcess.on('close', (code) => {
+        // Tests complete (don't exit on test failures)
+        console.log('\n🏁 PDF generation and testing complete!');
+      });
+    } catch (testError) {
+      console.log('⚠️  Could not run PDF tests:', testError.message);
+      console.log('🏁 PDF generation complete!');
+    }
+
   } catch (error) {
     console.error('❌ Error generating PDF:', error.message);
     process.exit(1);
