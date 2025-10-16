@@ -95,8 +95,8 @@ h2 {
 }
 
 .job-title {
-    font-style: italic;
     font-size: 10pt;
+    font-style: italic;
     grid-column: 1;
     grid-row: 2;
     justify-self: start;
@@ -112,7 +112,7 @@ h2 {
 
 .job p {
     margin: 0.3em 0;
-    font-size: 10pt;
+    font-size: 9pt;
 }
 
 .job ul {
@@ -122,7 +122,7 @@ h2 {
 
 .job li {
     margin-bottom: 0.1em;
-    font-size: 10pt;
+    font-size: 9pt;
 }
 
 /* Education section */
@@ -157,7 +157,6 @@ h2 {
 }
 
 .degree-title {
-    font-style: italic;
     font-size: 10pt;
     grid-column: 1;
     grid-row: 2;
@@ -174,7 +173,6 @@ h2 {
 
 .gpa {
     font-size: 10pt;
-    font-style: italic;
     grid-column: 1;
     grid-row: 3;
     justify-self: start;
