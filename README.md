@@ -10,3 +10,16 @@ Version control for my resume.
     - [Website] Resume nav link
     - [GitHub README] Badge
     - LinkedIn Profile
+
+## Dev
+
+### Resume Generator
+
+**Local PDF generation:**
+```bash
+npm run setup    # First time only
+npm run generate # Create Justin_Avery_Chan_Resume.pdf
+npm run preview  # View at localhost:3000
+```
+
+**GitHub Actions:** Auto-generates PDF on push to main/html-workflow or manual dispatch. PDF commits back to repo for GitHub Pages.

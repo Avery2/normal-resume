@@ -1,0 +1,55 @@
+name: Generate Resume PDF
+
+on:
+  push:
+    branches: [ main, html-workflow ]
+    paths:
+      - 'Justin_Avery_Chan_Resume.html'
+      - 'print.css'
+      - '.github/workflows/build.yml'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'Justin_Avery_Chan_Resume.html'
+      - 'print.css'
+      - '.github/workflows/build.yml'
+  workflow_dispatch:
+
+jobs:
+  generate-pdf:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+
+    - name: Install dependencies
+      run: npm run setup
+
+    - name: Generate PDF from HTML
+      run: npm run generate
+
+    - name: Upload PDF as artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: resume-pdf
+        path: Justin_Avery_Chan_Resume.pdf
+        retention-days: 90
+
+    - name: Commit PDF to repository
+      if: github.ref == 'refs/heads/main'
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add Justin_Avery_Chan_Resume.pdf
+        if git diff --staged --quiet; then
+          echo "No changes to commit"
+        else
+          git commit -m "Auto-generate Justin_Avery_Chan_Resume.pdf from HTML [skip ci]"
+          git push
+        fi
