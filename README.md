@@ -2,6 +2,17 @@
 
 Version control for my resume. Now a PDF generates from html so I can vibe code my resume.
 
+## Making updates (source of truth)
+
+`Justin_Avery_Chan_Resume.html` is the single source of truth. Everything else is generated or derived from it.
+
+- **Content** → edit `Justin_Avery_Chan_Resume.html`
+- **Styling/layout** → edit `print.css`
+- `generate-pdf.js` (Playwright) renders the HTML + `print.css` into `Justin_Avery_Chan_Resume.pdf` — do not edit the PDF by hand
+- `index.html` is just a web viewer that embeds the generated PDF; no resume content lives there
+
+**Flow to ship an update:** edit the HTML (and `print.css` if needed) → commit → push to `main`. GitHub Actions regenerates `Justin_Avery_Chan_Resume.pdf` and commits it back, which updates the live links below. To preview locally first, run `npm run generate`.
+
 ## Ops
 
 GitHub README and personal website both point to the file `Justin_Avery_Chan_Resume.pdf`.
